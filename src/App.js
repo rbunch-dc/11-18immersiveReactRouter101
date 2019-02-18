@@ -1,26 +1,40 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+// add the React Router module
+// the main thing we need is BrowserRouter
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import About from './About';
+import Home from './Home';
+import MovieList from './MovieList';
 
 class App extends Component {
   render() {
+    // The Router goes around EVERYHTHING it needs to control
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Router>
+        <div className="App">
+          <ul>
+            {/* In react router, we dont use <a>. That's so 2015.  */}
+              {/* That's so Team Fortress 2 */}
+              {/* Link component is the new <a> */}
+            {/* <li><a href="/">Home</a></li> */}
+            {/* <li><a href="/about">About</a></li> */}
+            <Link to="/">Home</Link>
+            <Link to="/about">About</Link>
+            <Link to="/movies">Movies</Link>
+          </ul>
+
+        {/* Use the Route component to set up a path match  */}
+        {/* if the path matches the browser path, it will render */}
+        {/* whatever is given as component prop */}
+        {/* Route is self closing */}
+        {/* If you have path by itself, it will look for that path ANYWHERE */}
+        {/* in the URL. To restrict to exact, use exact*/}
+          <Route path="/" exact component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/movies" component={MovieList} />
+        </div>
+      </Router>
     );
   }
 }
