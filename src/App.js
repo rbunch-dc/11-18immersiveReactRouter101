@@ -6,9 +6,12 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import About from './About';
 import Home from './Home';
 import MovieList from './MovieList';
+import Movie from './Movie';
 
 class App extends Component {
   render() {
+    const superHero = "Batman";
+
     // The Router goes around EVERYHTHING it needs to control
     return (
       <Router>
@@ -30,9 +33,15 @@ class App extends Component {
         {/* Route is self closing */}
         {/* If you have path by itself, it will look for that path ANYWHERE */}
         {/* in the URL. To restrict to exact, use exact*/}
-          <Route path="/" exact component={Home} />
+          {/* <Route path="/" exact component={Home} /> */}
+          <Route path="/" exact render={(props)=>{
+            return(
+              <Home superHero={superHero} />
+            )
+          }} />
           <Route path="/about" component={About} />
           <Route path="/movies" component={MovieList} />
+          <Route path="/movies/:movieId" component={Movie} />
         </div>
       </Router>
     );

@@ -34,6 +34,11 @@ class Movie extends Component{
 	}
 
 	render(){
+        // react router adds these props:
+        //   match = params/wildcard
+        //   history = all the past history of react-router
+        //   location = same as match, but without the bulk
+        console.log(this.props)
 		if(this.state.movie.title === undefined){
 			return(
 				<h1>Loading...</h1>
